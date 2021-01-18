@@ -1,0 +1,16 @@
+﻿@model Department
+
+<div class="my-form">
+    <form asp-action="Update" asp-route-id="@Model.Id" class="form-horizontal text-center">
+        <span class="heading">Редактирование отдела</span>
+        <div>
+            <div class="form-group">
+                <input type="text" asp-for="Title" placeholder="Название" />
+                <span asp-for="Title" />
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </div>
+        </div>
+    </form>
+</div>

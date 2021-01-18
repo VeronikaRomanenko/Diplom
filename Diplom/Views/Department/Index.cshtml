@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Department>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Название</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var department in Model)
+        {
+            <tr>
+                <td> @department.Title </td>
+                <td class="float-right">
+                    <a asp-action="Update" asp-route-id="@department.Id" class="btn btn-outline-primary">Редактировать</a>
+                    <a asp-action="Remove" asp-route-id="@department.Id" class="btn btn-outline-primary">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Добавить</a>
+</p>
