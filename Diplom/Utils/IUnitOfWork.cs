@@ -11,6 +11,8 @@ namespace Diplom.Utils
     {
         GenericRepository<Department> Departments { get; }
         GenericRepository<Discipline> Disciplines { get; }
+        GenericRepository<Technology> Technologies { get; }
+        GenericRepository<Position> Positions { get; }
         GenericRepository<User> Users { get; }
         void Save();
     }

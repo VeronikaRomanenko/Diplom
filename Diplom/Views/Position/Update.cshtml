@@ -1,12 +1,15 @@
-﻿@model Discipline
+﻿@model Position
 
 <div class="my-form">
     <form asp-action="Update" asp-route-id="@Model.Id" class="form-horizontal text-center">
-        <span class="heading">Редактирование дисциплины</span>
+        <span class="heading">Редактирование должности</span>
         <div>
             <div class="form-group">
                 <input class="form-control" type="text" asp-for="Title" placeholder="Название" />
                 <span asp-for="Title" />
+            </div>
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.IdDepartment, ViewBag.Departments as SelectList, new { @class = "form-control" })
             </div>
             <div class="form-group">
                 <a asp-action="Index" class="btn btn-primary">Отмена</a>

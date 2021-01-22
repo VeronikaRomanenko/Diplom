@@ -19,12 +19,12 @@ namespace Diplom.Repositories
 
         public IEnumerable<TEntity> Get()
         {
-            return _dbSet.AsNoTracking().ToList();
+            return _dbSet.ToList();
         }
 
         public IEnumerable<TEntity> Get(Func<TEntity, bool> predicate)
         {
-            return _dbSet.AsNoTracking().Where(predicate).ToList();
+            return _dbSet.Where(predicate).ToList();
         }
         public TEntity FindById(int id)
         {

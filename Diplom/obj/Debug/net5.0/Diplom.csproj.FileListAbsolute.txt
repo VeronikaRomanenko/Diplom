@@ -149,3 +149,12 @@ D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Department\Update.cs
 D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Discipline\Create.cshtml.g.cs
 D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Discipline\Index.cshtml.g.cs
 D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Discipline\Update.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Technology\Create.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Technology\Index.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Technology\Update.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Position\Create.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Position\Index.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Position\Update.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\bin\Debug\net5.0\Castle.Core.dll
+D:\!Диплом\Diplom\Diplom\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll
+D:\!Диплом\Diplom\Diplom\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll

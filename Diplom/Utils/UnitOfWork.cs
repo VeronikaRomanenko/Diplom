@@ -12,6 +12,8 @@ namespace Diplom.Utils
         private MyDbContext context;
         private GenericRepository<Department> departments;
         private GenericRepository<Discipline> disciplines;
+        private GenericRepository<Technology> technologies;
+        private GenericRepository<Position> positions;
         private GenericRepository<User> users;
 
         public UnitOfWork(MyDbContext context)
@@ -35,6 +37,24 @@ namespace Diplom.Utils
                 if (disciplines == null)
                     disciplines = new GenericRepository<Discipline>(context);
                 return disciplines;
+            }
+        }
+        public GenericRepository<Technology> Technologies
+        {
+            get
+            {
+                if (technologies == null)
+                    technologies = new GenericRepository<Technology>(context);
+                return technologies;
+            }
+        }
+        public GenericRepository<Position> Positions
+        {
+            get
+            {
+                if (positions == null)
+                    positions = new GenericRepository<Position>(context);
+                return positions;
             }
         }
         public GenericRepository<User> Users

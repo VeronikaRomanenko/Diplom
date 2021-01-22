@@ -1,8 +1,8 @@
-﻿@model Discipline
+﻿@model Technology
 
 <div class="my-form">
-    <form asp-action="Update" asp-route-id="@Model.Id" class="form-horizontal text-center">
-        <span class="heading">Редактирование дисциплины</span>
+    <form asp-action="Create" class="form-horizontal text-center">
+        <span class="heading">Добавление технологии</span>
         <div>
             <div class="form-group">
                 <input class="form-control" type="text" asp-for="Title" placeholder="Название" />
@@ -10,7 +10,7 @@
             </div>
             <div class="form-group">
                 <a asp-action="Index" class="btn btn-primary">Отмена</a>
-                <button type="submit" class="btn btn-primary">Сохранить</button>
+                <button type="submit" class="btn btn-primary">Добавить</button>
             </div>
         </div>
     </form>
