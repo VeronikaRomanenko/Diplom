@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Status>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Название</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var status in Model)
+        {
+            <tr>
+                <td> @status.Title </td>
+                <td class="float-right">
+                    <a asp-action="Update" asp-route-id="@status.Id" class="btn btn-outline-primary">Редактировать</a>
+                    <a asp-action="Remove" asp-route-id="@status.Id" class="btn btn-outline-primary">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Добавить</a>
+</p>

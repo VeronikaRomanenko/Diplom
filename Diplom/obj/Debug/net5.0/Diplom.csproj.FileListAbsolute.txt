@@ -158,3 +158,6 @@ D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Position\Update.csht
 D:\!Диплом\Diplom\Diplom\bin\Debug\net5.0\Castle.Core.dll
 D:\!Диплом\Diplom\Diplom\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Proxies.dll
 D:\!Диплом\Diplom\Diplom\bin\Debug\net5.0\System.Diagnostics.DiagnosticSource.dll
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Status\Create.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Status\Index.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Status\Update.cshtml.g.cs
