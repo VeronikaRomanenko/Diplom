@@ -161,3 +161,7 @@ D:\!Диплом\Diplom\Diplom\bin\Debug\net5.0\System.Diagnostics.DiagnosticSou
 D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Status\Create.cshtml.g.cs
 D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Status\Index.cshtml.g.cs
 D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Status\Update.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Person\Create.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Person\Details.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Person\Index.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Person\Update.cshtml.g.cs

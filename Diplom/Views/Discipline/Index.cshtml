@@ -4,6 +4,7 @@
     <thead>
         <tr>
             <th scope="col">Название</th>
+            <th scope="col">Технологии</th>
             <th scope="col"></th>
         </tr>
     </thead>
@@ -12,6 +13,12 @@
         {
             <tr>
                 <td> @discipline.Title </td>
+                <td>
+                    @foreach (var technology in discipline.Technologies)
+                    {
+                        @technology.Title
+                    }
+                </td>
                 <td class="float-right">
                     <a asp-action="Update" asp-route-id="@discipline.Id" class="btn btn-outline-primary">Редактировать</a>
                     <a asp-action="Remove" asp-route-id="@discipline.Id" class="btn btn-outline-primary">Удалить</a>

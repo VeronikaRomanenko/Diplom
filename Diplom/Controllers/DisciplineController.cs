@@ -25,12 +25,21 @@ namespace Diplom.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            List<Technology> technologies = (List<Technology>)db.Technologies.Get();
+            ViewBag.Technologies = technologies;
             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(Discipline discipline)
+        public IActionResult Create(Discipline discipline, int[] selected)
         {
+            if (selected != null)
+            {
+                foreach (var item in db.Technologies.Get().Where(t => selected.Contains(t.Id)))
+                {
+                    discipline.Technologies.Add(item);
+                }
+            }
             db.Disciplines.Create(discipline);
             db.Save();
             return RedirectToAction("Index");
