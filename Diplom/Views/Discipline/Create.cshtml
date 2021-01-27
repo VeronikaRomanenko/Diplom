@@ -12,7 +12,7 @@
                 @foreach (Technology t in ViewBag.Technologies)
                 {
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="@t.Id" id="defaultCheck_@t.Id">
+                        <input class="form-check-input" type="checkbox" id="defaultCheck_@t.Id" value="@t.Id" name="selectedTechnologies">
                         <label class="form-check-label" for="defaultCheck_@t.Id">
                             @t.Title
                         </label>

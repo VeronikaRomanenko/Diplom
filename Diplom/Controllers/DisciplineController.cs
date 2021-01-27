@@ -25,17 +25,16 @@ namespace Diplom.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            List<Technology> technologies = (List<Technology>)db.Technologies.Get();
-            ViewBag.Technologies = technologies;
+            ViewBag.Technologies = (List<Technology>)db.Technologies.Get();
             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(Discipline discipline, int[] selected)
+        public IActionResult Create(Discipline discipline, int[] selectedTechnologies)
         {
-            if (selected != null)
+            if (selectedTechnologies != null)
             {
-                foreach (var item in db.Technologies.Get().Where(t => selected.Contains(t.Id)))
+                foreach (var item in db.Technologies.Get().Where(t => selectedTechnologies.Contains(t.Id)))
                 {
                     discipline.Technologies.Add(item);
                 }
@@ -48,13 +47,25 @@ namespace Diplom.Controllers
         [HttpGet]
         public IActionResult Update(int id)
         {
+            ViewBag.Technologies = (List<Technology>)db.Technologies.Get();
             return View(db.Disciplines.FindById(id));
         }
 
         [HttpPost]
-        public IActionResult Update(Discipline discipline)
+        public IActionResult Update(Discipline discipline, int[] selectedTechnologies)
         {
-            db.Disciplines.Update(discipline);
+            Discipline newDiscipline = db.Disciplines.FindById(discipline.Id);
+            newDiscipline.Title = discipline.Title;
+
+            newDiscipline.Technologies.Clear();
+            if (selectedTechnologies != null)
+            {
+                foreach (var item in db.Technologies.Get().Where(t => selectedTechnologies.Contains(t.Id)))
+                {
+                    newDiscipline.Technologies.Add(item);
+                }
+            }
+            db.Disciplines.Update(newDiscipline);
             db.Save();
             return RedirectToAction("Index");
         }
