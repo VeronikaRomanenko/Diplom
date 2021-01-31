@@ -16,6 +16,7 @@ namespace Diplom.Utils
         GenericRepository<User> Users { get; }
         GenericRepository<Status> Statuses { get; }
         GenericRepository<Person> People { get; }
+        GenericRepository<Vacancy> Vacancies { get; }
         void Save();
     }
 }

@@ -12,8 +12,8 @@ namespace Diplom.Models
             if (!context.Sexes.Any())
             {
                 context.Sexes.AddRange(
-                    new Sex { Title = "male" },
-                    new Sex { Title = "female" });
+                    new Sex { Title = "мужской" },
+                    new Sex { Title = "женский" });
                 context.SaveChanges();
             }
             if (!context.Roles.Any())

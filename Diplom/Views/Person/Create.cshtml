@@ -1,23 +1,99 @@
 ﻿@model Person
 
-<div class="my-form">
+<div>
     <form asp-action="Create" class="form-horizontal text-center">
-        <span class="heading">Добавление дисциплины</span>
         <div>
-            <div class="form-group">
-                <input class="form-control" type="text" asp-for="Surname" placeholder="Фамилия" />
-                <span asp-for="Surname" />
+            <div class="form-group row">
+                <label for="Surname" class="col-sm-4 col-form-label">Фамилия</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" asp-for="Surname" id="Surname" />
+                </div>
             </div>
-            <div class="form-group">
-                <input class="form-control" type="text" asp-for="Name" placeholder="Имя" />
-                <span asp-for="Name" />
+            <div class="form-group row">
+                <label for="Name" class="col-sm-4 col-form-label">Имя</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" asp-for="Name" id="Name" />
+                </div>
             </div>
-            <div class="form-group">
-                <input class="form-control" type="text" asp-for="Patronymic" placeholder="Отчество" />
-                <span asp-for="Patronymic" />
+            <div class="form-group row">
+                <label for="Patronymic" class="col-sm-4 col-form-label">Отчество</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="text" asp-for="Patronymic" id="Patronymic" />
+                </div>
             </div>
-            <div class="form-group">
-
+            <div class="form-group row">
+                <label for="IdSex" class="col-sm-4 col-form-label">Пол</label>
+                <div class="col-sm-8">
+                    <select asp-for="IdSex" id="IdSex" class="form-control">
+                        <option value="1">Мужской</option>
+                        <option value="2">Женский</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="DateOfBirth" class="col-sm-4 col-form-label">Дата рождения</label>
+                <div class="col-sm-8">
+                    <input class="form-control" type="date" asp-for="DateOfBirth" id="DateOfBirth" />
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Education" class="col-sm-4 col-form-label">Образование</label>
+                <div class="col-sm-8">
+                    <textarea class="form-control" asp-for="Education" id="Education"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Expirience" class="col-sm-4 col-form-label">Опыт</label>
+                <div class="col-sm-8">
+                    <textarea class="form-control" asp-for="Expirience" id="Expirience"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Технологии</label>
+                <div class="col-sm-8">
+                    @foreach (Technology t in ViewBag.Technologies)
+                    {
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="defaultCheck_@t.Id" value="@t.Id" name="selectedTechnologies">
+                            <label class="form-check-label" for="defaultCheck_@t.Id">
+                                @t.Title
+                            </label>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="phones" class="col-sm-4 col-form-label">Номер телефона</label>
+                <div class="col-sm-8">
+                    <div id="phonesDiv">
+                        <input class="form-control" type="text" name="phones" id="phones" />
+                    </div>
+                    <button onclick="return addField('phones', 'phonesDiv')" class="btn btn-outline-secondary btn-block mt-2">Добавить номер</button>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="emails" class="col-sm-4 col-form-label">Email</label>
+                <div class="col-sm-8">
+                    <div id="emailsDiv">
+                        <input class="form-control" type="text" name="emails" id="emails" />
+                    </div>
+                    <button onclick="return addField('emails', 'emailsDiv')" class="btn btn-outline-secondary btn-block mt-2">Добавить email</button>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="socialMediaLinks" class="col-sm-4 col-form-label">Соц. сеть</label>
+                <div class="col-sm-8">
+                    <div id="socialMediaLinksDiv">
+                        <input class="form-control" type="text" name="socialMediaLinks" id="socialMediaLinks" />
+                    </div>
+                    <button onclick="return addField('socialMediaLinks', 'socialMediaLinksDiv')" class="btn btn-outline-secondary btn-block mt-2">Добавить ссылку</button>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Status" class="col-sm-4 col-form-label">Статус</label>
+                <div class="col-sm-8">
+                    @Html.DropDownListFor(model => model.IdStatus, ViewBag.Statuses as SelectList, new { @class = "form-control", id = "Status" })
+                </div>
             </div>
             <div class="form-group">
                 <a asp-action="Index" class="btn btn-primary">Отмена</a>
@@ -26,3 +102,20 @@
         </div>
     </form>
 </div>
+
+<script>
+    var curFieldNameId = 1;
+    function deleteField(a) {
+        var contDiv = a.parentNode.parentNode;
+        contDiv.parentNode.removeChild(contDiv);
+        return false;
+    }
+    function addField(name, id) {
+        curFieldNameId++;
+        var div = document.createElement("div");
+        div.innerHTML = "<div class='input-group mt-2'><input class='form-control' name='" + name + "' type='text' /><div class='input-group-append'>" +
+            "<button onclick='return deleteField(this)' class='btn btn-outline-secondary' type='button'>X</button></div></div>";
+        document.getElementById(id).appendChild(div);
+        return false;
+    }
+</script>

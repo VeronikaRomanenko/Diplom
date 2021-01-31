@@ -1,5 +1,70 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model Person
+
+<table class="table">
+    <tbody>
+        <tr>
+            <th scope="row">ФИО</th>
+            <td>@Model.Surname @Model.Name @Model.Patronymic</td>
+        </tr>
+        <tr>
+            <th scope="row">Пол</th>
+            <td>@Model.Sex.Title</td>
+        </tr>
+        <tr>
+            <th scope="row">Дата рождения</th>
+            <td>@Model.DateOfBirth.ToLongDateString()</td>
+        </tr>
+        <tr>
+            <th scope="row">Образование</th>
+            <td>@Model.Education</td>
+        </tr>
+        <tr>
+            <th scope="row">Опыт</th>
+            <td>@Model.Expirience</td>
+        </tr>
+        <tr>
+            <th scope="row">Технологии</th>
+            <td>
+                @foreach (Technology item in Model.Technologies)
+                {
+                    <p>@item.Title</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">Номер телефона</th>
+            <td>
+                @foreach (Phone item in Model.Phones)
+                {
+                    <p>@item.Number</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">Email</th>
+            <td>
+                @foreach (Email item in Model.Emails)
+                {
+                    <p>@item.EmailAddress</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">Соц. сеть</th>
+            <td>
+                @foreach (SocialMediaLink item in Model.SocialMediaLinks)
+                {
+                    <p>@item.Link</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">Статус</th>
+            <td>@Model.Status.Title</td>
+        </tr>
+    </tbody>
+</table>
+<p>
+    <a asp-action="Index" class="btn btn-primary">Назад</a>
+    <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-primary">Редактировать</a>
+</p>

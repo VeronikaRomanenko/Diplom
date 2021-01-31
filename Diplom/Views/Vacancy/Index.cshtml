@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Vacancy>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Название</th>
+            <th scope="col">Дата открытия</th>
+            <th scope="col">Статус</th>
+            <th scope="col">Дисциплины</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var vacancy in Model)
+        {
+            <tr>
+                <td> @vacancy.Title </td>
+                <td> @vacancy.StartDate.ToLongDateString() </td>
+                <td> @if (vacancy.IsArchived){ <span>Закрыта</span> } else { <span>Открыта</span> } </td>
+                <td>
+                    @foreach (var discipline in vacancy.Disciplines)
+                    {
+                        @discipline.Title<span>; </span>
+                    }
+                </td>
+                <td class="float-right">
+                    <a asp-action="Update" asp-route-id="@vacancy.Id" class="btn btn-outline-primary">Редактировать</a>
+                    <a asp-action="Remove" asp-route-id="@vacancy.Id" class="btn btn-outline-primary">Удалить</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Добавить</a>
+</p>
