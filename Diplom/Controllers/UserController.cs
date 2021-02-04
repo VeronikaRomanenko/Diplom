@@ -9,32 +9,32 @@ using System.Threading.Tasks;
 
 namespace Diplom.Controllers
 {
-    public class PositionController : Controller
+    public class UserController : Controller
     {
         private IUnitOfWork db;
 
-        public PositionController(IUnitOfWork db)
+        public UserController(IUnitOfWork db)
         {
             this.db = db;
         }
 
         public IActionResult Index()
         {
-            return View(db.Positions.Get());
+            return View(db.Users.Get());
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            SelectList departments = new SelectList(db.Departments.Get(), "Id", "Title");
-            ViewBag.Departments = departments;
+            SelectList roles = new SelectList(db.Roles.Get(), "Id", "Title");
+            ViewBag.Roles = roles;
             return View();
         }
 
         [HttpPost]
-        public IActionResult Create(Position position)
+        public IActionResult Create(User user)
         {
-            db.Positions.Create(position);
+            db.Users.Create(user);
             db.Save();
             return RedirectToAction("Index");
         }
@@ -42,22 +42,22 @@ namespace Diplom.Controllers
         [HttpGet]
         public IActionResult Update(int id)
         {
-            SelectList departments = new SelectList(db.Departments.Get(), "Id", "Title");
-            ViewBag.Departments = departments;
-            return View(db.Positions.FindById(id));
+            SelectList roles = new SelectList(db.Roles.Get(), "Id", "Title");
+            ViewBag.Roles = roles;
+            return View(db.Users.FindById(id));
         }
 
         [HttpPost]
-        public IActionResult Update(Position position)
+        public IActionResult Update(User user)
         {
-            db.Positions.Update(position);
+            db.Users.Update(user);
             db.Save();
             return RedirectToAction("Index");
         }
 
         public IActionResult Remove(int id)
         {
-            db.Positions.Remove(db.Positions.FindById(id));
+            db.Users.Remove(db.Users.FindById(id));
             db.Save();
             return RedirectToAction("Index");
         }

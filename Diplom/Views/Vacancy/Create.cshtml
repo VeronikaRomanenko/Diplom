@@ -12,10 +12,6 @@
                 <textarea class="form-control" asp-for="Description" id="Description" placeholder="Описание"></textarea>
             </div>
             <div class="form-group">
-                <label for="StartDate" class="form-label">Дата открытия</label>
-                <input class="form-control" type="date" asp-for="StartDate" id="StartDate" />
-            </div>
-            <div class="form-group">
                 @foreach (Discipline d in ViewBag.Disciplines)
                 {
                     <div class="form-check">

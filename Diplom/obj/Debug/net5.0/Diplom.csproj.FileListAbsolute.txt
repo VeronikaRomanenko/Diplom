@@ -168,3 +168,4 @@ D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Person\Update.cshtml
 D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Vacancy\Create.cshtml.g.cs
 D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Vacancy\Index.cshtml.g.cs
 D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Vacancy\Update.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Vacancy\Details.cshtml.g.cs

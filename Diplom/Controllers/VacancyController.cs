@@ -22,6 +22,28 @@ namespace Diplom.Controllers
             return View(db.Vacancies.Get());
         }
 
+        public IActionResult Details(int id)
+        {
+            return View(db.Vacancies.FindById(id));
+        }
+
+        public IActionResult Close(int id)
+        {
+            Vacancy vacancy = db.Vacancies.FindById(id);
+            vacancy.IsArchived = true;
+            vacancy.EndDate = DateTime.Now;
+            db.Save();
+            return RedirectToAction("Details", new { id = id });
+        }
+
+        public IActionResult Open(int id)
+        {
+            Vacancy vacancy = db.Vacancies.FindById(id);
+            vacancy.IsArchived = false;
+            db.Save();
+            return RedirectToAction("Details", new { id = id });
+        }
+
         [HttpGet]
         public IActionResult Create()
         {
@@ -40,6 +62,7 @@ namespace Diplom.Controllers
                 }
             }
             vacancy.IsArchived = false;
+            vacancy.StartDate = DateTime.Now;
             db.Vacancies.Create(vacancy);
             db.Save();
             return RedirectToAction("Index");
@@ -49,7 +72,7 @@ namespace Diplom.Controllers
         public IActionResult Update(int id)
         {
             ViewBag.Disciplines = (List<Discipline>)db.Disciplines.Get();
-            return View(db.Disciplines.FindById(id));
+            return View(db.Vacancies.FindById(id));
         }
 
         [HttpPost]
@@ -58,7 +81,6 @@ namespace Diplom.Controllers
             Vacancy newVacancy = db.Vacancies.FindById(vacancy.Id);
             newVacancy.Title = vacancy.Title;
             newVacancy.Description = vacancy.Description;
-            newVacancy.IsArchived = vacancy.IsArchived;
             newVacancy.StartDate = vacancy.StartDate;
             newVacancy.EndDate = vacancy.EndDate;
 
@@ -72,7 +94,7 @@ namespace Diplom.Controllers
             }
             db.Vacancies.Update(newVacancy);
             db.Save();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", new { id = vacancy.Id });
         }
 
         public IActionResult Remove(int id)

@@ -15,6 +15,7 @@ namespace Diplom.Utils
         private GenericRepository<Technology> technologies;
         private GenericRepository<Position> positions;
         private GenericRepository<User> users;
+        private GenericRepository<Role> roles;
         private GenericRepository<Status> statuses;
         private GenericRepository<Person> people;
         private GenericRepository<Vacancy> vacancies;
@@ -67,6 +68,15 @@ namespace Diplom.Utils
                 if (users == null)
                     users = new GenericRepository<User>(context);
                 return users;
+            }
+        }
+        public GenericRepository<Role> Roles
+        {
+            get
+            {
+                if (roles == null)
+                    roles = new GenericRepository<Role>(context);
+                return roles;
             }
         }
         public GenericRepository<Status> Statuses

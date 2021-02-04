@@ -15,6 +15,13 @@
                 <label for="StartDate" class="form-label">Дата открытия</label>
                 <input class="form-control" type="date" asp-for="StartDate" id="StartDate" />
             </div>
+            @if (Model.IsArchived)
+            {
+                <div class="form-group">
+                    <label for="EndDate" class="form-label">Дата закрытия</label>
+                    <input class="form-control" type="date" asp-for="EndDate" id="EndDate" />
+                </div>
+            }
             <div class="form-group">
                 @foreach (Discipline d in ViewBag.Disciplines)
                 {
@@ -27,7 +34,7 @@
                 }
             </div>
             <div class="form-group">
-                <a asp-action="Index" class="btn btn-primary">Отмена</a>
+                <a asp-action="Details" asp-route-id="@Model.Id" class="btn btn-primary">Отмена</a>
                 <button type="submit" class="btn btn-primary">Сохранить</button>
             </div>
         </div>

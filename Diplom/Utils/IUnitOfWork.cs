@@ -14,6 +14,7 @@ namespace Diplom.Utils
         GenericRepository<Technology> Technologies { get; }
         GenericRepository<Position> Positions { get; }
         GenericRepository<User> Users { get; }
+        GenericRepository<Role> Roles { get; }
         GenericRepository<Status> Statuses { get; }
         GenericRepository<Person> People { get; }
         GenericRepository<Vacancy> Vacancies { get; }

@@ -104,14 +104,12 @@
 </div>
 
 <script>
-    var curFieldNameId = 1;
     function deleteField(a) {
         var contDiv = a.parentNode.parentNode;
         contDiv.parentNode.removeChild(contDiv);
         return false;
     }
     function addField(name, id) {
-        curFieldNameId++;
         var div = document.createElement("div");
         div.innerHTML = "<div class='input-group mt-2'><input class='form-control' name='" + name + "' type='text' /><div class='input-group-append'>" +
             "<button onclick='return deleteField(this)' class='btn btn-outline-secondary' type='button'>X</button></div></div>";

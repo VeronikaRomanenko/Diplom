@@ -19,7 +19,10 @@ namespace Diplom.Models
             if (!context.Roles.Any())
             {
                 context.Roles.AddRange(
-                    new Role { Title = "admin" });
+                    new Role { Title = "admin" },
+                    new Role { Title = "МУП" },
+                    new Role { Title = "HR" },
+                    new Role { Title = "Директор" });
                 context.SaveChanges();
             }
             if (!context.Users.Any())

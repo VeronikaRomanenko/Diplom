@@ -1,0 +1,31 @@
+﻿@model Vacancy
+
+<div>
+    <h1>@Model.Title</h1>
+    <div>
+        <p>@Model.Description</p>
+        <p>Дата открытия - @Model.StartDate.ToLongDateString()</p>
+        @if (Model.IsArchived)
+        {
+            <p>Дата закрытия - @Model.EndDate.ToLongDateString()</p>
+        }
+        <h5>Дисциплины</h5>
+        <ul>@foreach (Discipline d in Model.Disciplines)
+        {
+            <li>@d.Title</li>
+        }</ul>
+        <div>
+            <a asp-action="Index" class="btn btn-outline-primary">Назад</a>
+            <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-outline-primary">Редактировать</a>
+            @if (Model.IsArchived)
+            {
+                <a asp-action="Open" asp-route-id="@Model.Id" class="btn btn-outline-success">Открыть вакансию</a>
+            }
+            else
+            {
+                <a asp-action="Close" asp-route-id="@Model.Id" class="btn btn-outline-danger">Закрыть вакансию</a>
+            }
+            <a asp-action="Remove" asp-route-id="@Model.Id" class="btn btn-outline-danger">Удалить</a>
+        </div>
+    </div>
+</div>
