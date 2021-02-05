@@ -1,5 +1,28 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model User
+
+<div class="my-form">
+    <form asp-action="Update" asp-route-id="@Model.Id" class="form-horizontal text-center">
+        <span class="heading">Редактирование пользователя</span>
+        <div>
+            <div class="form-group">
+                <input class="form-control" type="text" asp-for="Login" placeholder="Название" />
+                <span asp-for="Title" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" asp-for="Password" placeholder="Пароль" />
+                <span asp-for="Title" />
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" asp-for="Email" placeholder="Email" />
+                <span asp-for="Title" />
+            </div>
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.IdRole, ViewBag.Roles as SelectList, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <a asp-action="Index" class="btn btn-primary">Отмена</a>
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </div>
+        </div>
+    </form>
+</div>

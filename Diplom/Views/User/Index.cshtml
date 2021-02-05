@@ -1,5 +1,26 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model IEnumerable<User>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Логин</th>
+            <th scope="col">Роль</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td> @user.Login</td>
+                <td> @user.Role.Title </td>
+                <td class="float-right">
+                    <a asp-action="Details" asp-route-id="@user.Id" class="btn btn-outline-primary">Подробнее</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Добавить</a>
+</p>

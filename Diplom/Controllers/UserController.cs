@@ -23,6 +23,11 @@ namespace Diplom.Controllers
             return View(db.Users.Get());
         }
 
+        public IActionResult Details(int id)
+        {
+            return View(db.Users.FindById(id));
+        }
+
         [HttpGet]
         public IActionResult Create()
         {
@@ -52,7 +57,7 @@ namespace Diplom.Controllers
         {
             db.Users.Update(user);
             db.Save();
-            return RedirectToAction("Index");
+            return RedirectToAction("Details", new { id = user.Id });
         }
 
         public IActionResult Remove(int id)

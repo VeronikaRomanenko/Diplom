@@ -169,3 +169,7 @@ D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Vacancy\Create.cshtm
 D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Vacancy\Index.cshtml.g.cs
 D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Vacancy\Update.cshtml.g.cs
 D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Vacancy\Details.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\User\Create.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\User\Details.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\User\Index.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\User\Update.cshtml.g.cs
