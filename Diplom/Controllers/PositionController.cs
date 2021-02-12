@@ -1,5 +1,6 @@
 ﻿using Diplom.Models;
 using Diplom.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Diplom.Controllers
 {
+    [Authorize]
     public class PositionController : Controller
     {
         private IUnitOfWork db;

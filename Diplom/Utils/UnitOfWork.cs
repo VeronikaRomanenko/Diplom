@@ -18,6 +18,7 @@ namespace Diplom.Utils
         private GenericRepository<Role> roles;
         private GenericRepository<Status> statuses;
         private GenericRepository<Person> people;
+        private GenericRepository<Comment> comments;
         private GenericRepository<Vacancy> vacancies;
 
         public UnitOfWork(MyDbContext context)
@@ -95,6 +96,15 @@ namespace Diplom.Utils
                 if (people == null)
                     people = new GenericRepository<Person>(context);
                 return people;
+            }
+        }
+        public GenericRepository<Comment> Comments
+        {
+            get
+            {
+                if (comments == null)
+                    comments = new GenericRepository<Comment>(context);
+                return comments;
             }
         }
         public GenericRepository<Vacancy> Vacancies

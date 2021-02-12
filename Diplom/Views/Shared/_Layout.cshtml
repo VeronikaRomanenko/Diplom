@@ -35,9 +35,20 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        <div class="row panel">
+            <div class="col-md-4">
+                @Html.ActionLink("Вакансии", "Index", "Vacancy", null, new { @class = "btn btn-block btn-default btn-lg" })
+                @Html.ActionLink("Люди", "Index", "Person", null, new { @class = "btn btn-block btn-default btn-lg" })
+                @Html.ActionLink("Должности", "Index", "Position", null, new { @class = "btn btn-block btn-default btn-lg" })
+                @Html.ActionLink("Департаменты", "Index", "Department", null, new { @class = "btn btn-block btn-default btn-lg" })
+                @Html.ActionLink("Дисциплины", "Index", "Discipline", null, new { @class = "btn btn-block btn-default btn-lg" })
+                @Html.ActionLink("Технологии", "Index", "Technology", null, new { @class = "btn btn-block btn-default btn-lg" })
+                @Html.ActionLink("Пользователи", "Index", "User", null, new { @class = "btn btn-block btn-default btn-lg" })
+            </div>
+            <div class="col-md-8">
+                @RenderBody()
+            </div>
+        </div>
     </div>
 
     <footer class="border-top footer text-muted">

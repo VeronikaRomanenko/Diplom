@@ -36,7 +36,7 @@ namespace Diplom.Controllers
                 User user = db.Users.Get().FirstOrDefault(u => u.Email == model.Login && u.Password == model.Password);
                 if (user != null)
                 {
-                    await Authenticate(model.Login);
+                    await Authenticate(user);
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -45,11 +45,12 @@ namespace Diplom.Controllers
             return View(model);
         }
 
-        private async Task Authenticate(string userName)
+        private async Task Authenticate(User user)
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimsIdentity.DefaultNameClaimType, userName)
+                new Claim(ClaimsIdentity.DefaultNameClaimType, user.Login),
+                new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.Title)
             };
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));

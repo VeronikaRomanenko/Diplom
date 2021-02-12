@@ -64,8 +64,29 @@
         </tr>
     </tbody>
 </table>
+<div id="comments">
+    <form asp-action="AddComment" asp-route-id="@Model.Id" class="form-horizontal text-center" id="commentAdding" style="display:none">
+        <textarea class="form-control" id="text"></textarea>
+        <p>
+            <button onclick="return cancelAdding()" class="btn btn-outline-secondary">Отмена</button>
+            <button type="submit" class="btn btn-outline-secondary">Сохранить</button>
+        </p>
+    </form>
+</div>
 <p>
     <a asp-action="Index" class="btn btn-outline-primary">Назад</a>
     <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-outline-primary">Редактировать</a>
+    <button onclick="return addComment()" class="btn btn-outline-primary">Добавить комментарий</button>
     <a asp-action="Remove" asp-route-id="@Model.Id" class="btn btn-outline-danger">Удалить</a>
 </p>
+
+<script>
+    function cancelAdding() {
+        $('#commentAdding').hide();
+        return false;
+    }
+    function addComment() {
+        $('#commentAdding').show();
+        return false;
+    }
+</script>

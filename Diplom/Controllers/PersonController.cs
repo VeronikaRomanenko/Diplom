@@ -1,5 +1,6 @@
 ﻿using Diplom.Models;
 using Diplom.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Diplom.Controllers
 {
+    [Authorize]
     public class PersonController : Controller
     {
         private IUnitOfWork db;
@@ -26,6 +28,13 @@ namespace Diplom.Controllers
         public IActionResult Details(int id)
         {
             return View(db.People.FindById(id));
+        }
+
+        public IActionResult AddComment(int id, string text)
+        {
+            int userId = db.Users.Get(i => i.Login == User.Identity.Name).FirstOrDefault().Id;
+            db.Comments.Create(new Comment() { DateTime = DateTime.Now, IdPerson = id, CommentText = text, IdUser = userId, IsLog = false });
+            return RedirectToAction("Details", new { id = id });
         }
 
         [HttpGet]

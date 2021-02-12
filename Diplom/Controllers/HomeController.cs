@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Diplom.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private IUnitOfWork db;
@@ -20,7 +21,6 @@ namespace Diplom.Controllers
             this.db = db;
         }
 
-        [Authorize]
         public IActionResult Index()
         {
             return View();

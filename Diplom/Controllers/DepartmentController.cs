@@ -1,5 +1,6 @@
 ﻿using Diplom.Models;
 using Diplom.Utils;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Diplom.Controllers
 {
+    [Authorize]
     public class DepartmentController : Controller
     {
         private IUnitOfWork db;
