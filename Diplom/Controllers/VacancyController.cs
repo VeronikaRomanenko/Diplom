@@ -26,7 +26,9 @@ namespace Diplom.Controllers
 
         public IActionResult Details(int id)
         {
-            return View(db.Vacancies.FindById(id));
+            Vacancy v = db.Vacancies.FindById(id);
+            ViewBag.Responses = v.Responses.OrderByDescending(i => i.Status);
+            return View(v);
         }
 
         public IActionResult Close(int id)

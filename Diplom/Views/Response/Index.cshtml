@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Response>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Вакансия</th>
+            <th scope="col">Кандидат</th>
+            <th scope="col">Дата</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var response in Model)
+        {
+            <tr>
+                <td> <a asp-controller="Vacancy" asp-action="Details" asp-route-id="@response.Vacancy.Id"> @response.Vacancy.Title </a> </td>
+                <td> <a asp-controller="Person" asp-action="Details" asp-route-id="@response.Person.Id"> @response.Person.Surname @response.Person.Name @response.Person.Patronymic </a> </td>
+                <td> @response.ResponseDate.ToLongDateString() </td>
+                <td>
+                    @if (!response.Status)
+                    {
+                        <span class="text-danger">В архиве</span>
+                    }
+                </td>
+                <td class="float-right">
+                    <a asp-action="Details" asp-route-id="@response.Id" class="btn btn-outline-primary">Подробнее</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Добавить</a>
+</p>

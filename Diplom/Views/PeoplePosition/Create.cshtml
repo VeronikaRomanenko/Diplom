@@ -1,0 +1,21 @@
+﻿@model PeoplePosition
+
+<div class="my-form">
+    <form asp-action="Create" class="form-horizontal text-center">
+        <span class="heading">@ViewBag.Person.Surname @ViewBag.Person.Name @ViewBag.Person.Patronymic</span>
+        <input value="@ViewBag.Person.Id" asp-for="IdPerson" style="display:none" />
+        <div>
+            <div class="form-group">
+                <input class="form-control" type="number" asp-for="Salary" placeholder="Зарплата" />
+                <span asp-for="Salary" />
+            </div>
+            <div class="form-group">
+                @Html.DropDownListFor(model => model.IdPosition, ViewBag.Positions as SelectList, new { @class = "form-control", id = "Position" })
+            </div>
+            <div class="form-group">
+                <a asp-controller="Person" asp-action="Details" asp-route-id="@ViewBag.Person.Id" class="btn btn-primary">Отмена</a>
+                <button type="submit" class="btn btn-primary">Добавить</button>
+            </div>
+        </div>
+    </form>
+</div>

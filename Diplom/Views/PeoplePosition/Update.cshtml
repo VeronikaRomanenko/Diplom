@@ -1,0 +1,33 @@
+﻿@model PeoplePosition
+
+<div class="my-form">
+    <form asp-action="Update" asp-route-id="@Model.Id" class="form-horizontal text-center">
+        <span class="heading">@Model.Person.Surname @Model.Person.Name @Model.Person.Patronymic</span>
+        <input asp-for="IdPerson" style="display:none" />
+        <div>
+            <div class="form-group">
+                <input class="form-control" type="number" asp-for="Salary" placeholder="Зарплата" />
+                <span asp-for="Salary" />
+            </div>
+            <div class="form-group">
+                <label for="StartDate" class="form-label">Дата вступления в должность</label>
+                <input class="form-control" type="date" asp-for="StartDate" id="StartDate" />
+            </div>
+            @if (!Model.IsWorked)
+            {
+                <div class="form-group">
+                    <label for="EndDate" class="form-label">Дата увольнения/перевода</label>
+                    <input class="form-control" type="date" asp-for="EndDate" id="EndDate" />
+                </div>
+            }
+            <div class="form-group">
+                <a asp-controller="Person" asp-action="Details" asp-route-id="@Model.IdPerson" class="btn btn-primary">Отмена</a>
+                @if (Model.IsWorked)
+                {
+                    <a asp-action="Close" asp-route-id="@Model.Id" class="btn btn-outline-danger">Уволить</a>
+                }
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </div>
+        </div>
+    </form>
+</div>

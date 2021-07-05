@@ -14,6 +14,35 @@
         {
             <li>@d.Title</li>
         }</ul>
+        <h5>Ответы</h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Кандидат</th>
+                    <th scope="col">Дата</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var response in ViewBag.Responses)
+                {
+                    <tr>
+                        <td> <a asp-controller="Person" asp-action="Details" asp-route-id="@response.Person.Id"> @response.Person.Surname @response.Person.Name @response.Person.Patronymic </a> </td>
+                        <td> @response.ResponseDate.ToLongDateString() </td>
+                        <td>
+                            @if (!response.Status)
+                            {
+                                <span class="text-danger">В архиве</span>
+                            }
+                        </td>
+                        <td class="float-right">
+                            <a asp-controller="Response" asp-action="Details" asp-route-id="@response.Id" class="btn btn-outline-primary">Подробнее</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
         <div>
             <a asp-action="Index" class="btn btn-outline-primary">Назад</a>
             <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-outline-primary">Редактировать</a>
@@ -25,6 +54,7 @@
             {
                 <a asp-action="Close" asp-route-id="@Model.Id" class="btn btn-outline-danger">Закрыть вакансию</a>
             }
+            <a asp-controller="Response" asp-action="Create" class="btn btn-outline-primary">Добавить ответ</a>
             <a asp-action="Remove" asp-route-id="@Model.Id" class="btn btn-outline-danger">Удалить</a>
         </div>
     </div>

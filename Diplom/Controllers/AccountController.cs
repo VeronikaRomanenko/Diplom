@@ -33,12 +33,12 @@ namespace Diplom.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = db.Users.Get().FirstOrDefault(u => u.Email == model.Login && u.Password == model.Password);
+                User user = db.Users.Get().FirstOrDefault(u => u.Login == model.Login && u.Password == model.Password);
                 if (user != null)
                 {
                     await Authenticate(user);
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Response");
                 }
                 ModelState.AddModelError("", "Некорректные логин и(или) пароль");
             }

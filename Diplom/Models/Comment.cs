@@ -17,7 +17,7 @@ namespace Diplom.Models
 
         [ForeignKey(nameof(IdPerson))]
         public virtual Person Person { get; set; }
-        [ForeignKey(nameof(Id))]
+        [ForeignKey(nameof(IdUser))]
         public virtual User User { get; set; }
     }
 }

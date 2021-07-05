@@ -173,3 +173,8 @@ D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\User\Create.cshtml.g
 D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\User\Details.cshtml.g.cs
 D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\User\Index.cshtml.g.cs
 D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\User\Update.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Response\Create.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Response\Details.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\Response\Index.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\PeoplePosition\Create.cshtml.g.cs
+D:\!Диплом\Diplom\Diplom\obj\Debug\net5.0\Razor\Views\PeoplePosition\Update.cshtml.g.cs

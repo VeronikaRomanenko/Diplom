@@ -15,6 +15,8 @@ namespace Diplom.Controllers
     {
         private IUnitOfWork db;
 
+        const int hired = 7;
+
         public PersonController(IUnitOfWork db)
         {
             this.db = db;
@@ -27,20 +29,44 @@ namespace Diplom.Controllers
 
         public IActionResult Details(int id)
         {
-            return View(db.People.FindById(id));
+            ViewBag.IdUser = db.Users.Get(i => i.Login == User.Identity.Name).FirstOrDefault().Id;
+            ViewBag.hired = hired;
+            Person p = db.People.FindById(id);
+            bool isWorked = false;
+            foreach (var item in p.PeoplePositions)
+            {
+                if (item.IsWorked == true)
+                    isWorked = true;
+            }
+            if (isWorked && p.IdStatus != hired)
+            {
+                p.IdStatus = hired;
+                db.People.Update(p);
+                db.Save();
+            }
+            ViewBag.PeoplePositions = p.PeoplePositions.OrderByDescending(i => i.IsWorked);
+            return View(p);
         }
 
         public IActionResult AddComment(int id, string text)
         {
             int userId = db.Users.Get(i => i.Login == User.Identity.Name).FirstOrDefault().Id;
             db.Comments.Create(new Comment() { DateTime = DateTime.Now, IdPerson = id, CommentText = text, IdUser = userId, IsLog = false });
+            db.Save();
             return RedirectToAction("Details", new { id = id });
+        }
+
+        public IActionResult RemoveComment(int idperson, int idcomment)
+        {
+            db.Comments.Remove(db.Comments.FindById(idcomment));
+            db.Save();
+            return RedirectToAction("Details", new { id = idperson });
         }
 
         [HttpGet]
         public IActionResult Create()
         {
-            ViewBag.Statuses = new SelectList(db.Statuses.Get(), "Id", "Title");
+            ViewBag.Statuses = new SelectList(db.Statuses.Get().Where(s => s.Id != hired), "Id", "Title");
             ViewBag.Technologies = (List<Technology>)db.Technologies.Get();
             return View();
         }
@@ -84,11 +110,17 @@ namespace Diplom.Controllers
         [HttpGet]
         public IActionResult Update(int id)
         {
-            ViewBag.Statuses = new SelectList(db.Statuses.Get(), "Id", "Title");
+            Person p = db.People.FindById(id);
+            var statuses = db.Statuses.Get();
+            if (p.IdStatus != hired)
+                statuses = statuses.Where(s => s.Id != hired);
+            else
+                statuses = statuses.Where(s => s.Id == hired);
+            ViewBag.Statuses = new SelectList(statuses, "Id", "Title");
             ViewBag.Technologies = (List<Technology>)db.Technologies.Get();
-            return View(db.People.FindById(id));
+            return View(p);
         }
-
+            
         [HttpPost]
         public IActionResult Update(Person person, string[] phones, string[] emails, string[] socialMediaLinks, int[] selectedTechnologies)
         {

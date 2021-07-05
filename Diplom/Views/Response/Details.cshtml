@@ -1,0 +1,37 @@
+﻿@model Response
+
+<div>
+    <h5><a asp-controller="Vacancy" asp-action="Details" asp-route-id="@Model.IdVacancy">@Model.Vacancy.Title</a></h5>
+    <p>@Model.Vacancy.Description</p>
+    <p>Дисциплины: @ViewBag.DisciplinesTechnologies</p>
+    <hr /><h5><a asp-controller="Person" asp-action="Details" asp-route-id="@Model.IdPerson">@Model.Person.Surname @Model.Person.Name @Model.Person.Patronymic</a></h5>
+    <p>Образование: @Model.Person.Education</p>
+    <p>Опыт: @Model.Person.Expirience</p>
+    <p>
+        Технологии:
+        @foreach (Technology d in Model.Person.Technologies)
+        {
+            @(d.Title + "; ")
+        }
+    </p>
+    @if (ViewBag.isMeet)
+    {
+        <p class="text-success">Соответствует требованиям вакансии</p>
+    }
+    else
+    {
+        <p class="text-danger">Не соответствует требованиям вакансии</p>
+    }<hr />
+    <div>
+        <a asp-action="Index" class="btn btn-outline-primary">Назад</a>
+        @if (Model.Status)
+        {
+            <a asp-action="Close" asp-route-id="@Model.Id" class="btn btn-outline-success">В архив</a>
+        }
+        else
+        {
+            <a asp-action="Open" asp-route-id="@Model.Id" class="btn btn-outline-danger">Вернуть из архива</a>
+        }
+        <a asp-action="Remove" asp-route-id="@Model.Id" class="btn btn-outline-danger">Удалить</a>
+    </div>
+</div>

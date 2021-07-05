@@ -12,6 +12,7 @@ namespace Diplom.Models
         public double Salary { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        public bool IsWorked { get; set; }
         public int IdPerson { get; set; }
         public int IdPosition { get; set; }
 

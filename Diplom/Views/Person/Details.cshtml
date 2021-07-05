@@ -62,17 +62,105 @@
             <th scope="row">Статус</th>
             <td>@Model.Status.Title</td>
         </tr>
+        <tr>
+            <td colspan="2">
+                <table class="table">
+                    @foreach (Comment item in Model.Comments)
+                    {
+                        <tr>
+                            <td>@item.User.Login</td>
+                            <td>@item.CommentText</td>
+                            <td>@item.DateTime.ToShortDateString()</td>
+                        </tr>
+                        @if (ViewBag.IdUser == item.User.Id)
+                        {
+                            <tr>
+                                <td><a asp-action="RemoveComment" asp-route-idperson="@Model.Id" asp-route-idcomment="@item.Id" class="btn btn-outline-secondary">Удалить</a></td>
+                            </tr>
+                        }
+                    }
+                </table>
+                <div id="comments">
+                    <form asp-action="AddComment" asp-route-id="@Model.Id" class="form-horizontal text-center" id="commentAdding" style="display:none">
+                        <textarea class="form-control" id="text" name="text"></textarea>
+                        <p>
+                            <button onclick="return cancelAdding()" class="btn btn-outline-secondary">Отмена</button>
+                            <button type="submit" class="btn btn-outline-secondary">Сохранить</button>
+                        </p>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        @if (Model.IdStatus == ViewBag.hired)
+        {
+            <tr>
+                <td colspan="2">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Должность</th>
+                                <th scope="col">Зарплата</th>
+                                <th scope="col">Дата вступления в должность</th>
+                                <th scope="col">Дата увольнения/перевода</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (PeoplePosition item in ViewBag.PeoplePositions)
+                            {
+                                <tr>
+                                    <td>@item.Position.Title</td>
+                                    <td>@item.Salary</td>
+                                    <td>@item.StartDate.ToShortDateString()</td>
+                                    <td>
+                                        @if (!item.IsWorked)
+                                        {
+                                            <span>@item.EndDate.ToShortDateString()</span>
+                                        }
+                                </td>
+
+                                <td><a asp-controller="PeoplePosition" asp-action="Update" asp-route-id="@item.Id" class="btn btn-outline-primary">Редактировать</a></td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
-<div id="comments">
-    <form asp-action="AddComment" asp-route-id="@Model.Id" class="form-horizontal text-center" id="commentAdding" style="display:none">
-        <textarea class="form-control" id="text"></textarea>
-        <p>
-            <button onclick="return cancelAdding()" class="btn btn-outline-secondary">Отмена</button>
-            <button type="submit" class="btn btn-outline-secondary">Сохранить</button>
-        </p>
-    </form>
-</div>
+<p>
+    <a asp-controller="PeoplePosition" asp-action="Create" asp-route-id="@Model.Id" class="btn btn-outline-primary">Принять на работу</a>
+</p>
+<h5>Ответы на вакансии</h5>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Вакансия</th>
+            <th scope="col">Дата</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var response in Model.Responses)
+        {
+            <tr>
+                <td> <a asp-controller="Vacancy" asp-action="Details" asp-route-id="@response.IdVacancy"> @response.Vacancy.Title </a> </td>
+                <td> @response.ResponseDate.ToLongDateString() </td>
+                <td>
+                    @if (!response.Status)
+                    {
+                        <span class="text-danger">В архиве</span>
+                    }
+                </td>
+                <td class="float-right">
+                    <a asp-controller="Response" asp-action="Details" asp-route-id="@response.Id" class="btn btn-outline-primary">Подробнее</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 <p>
     <a asp-action="Index" class="btn btn-outline-primary">Назад</a>
     <a asp-action="Update" asp-route-id="@Model.Id" class="btn btn-outline-primary">Редактировать</a>

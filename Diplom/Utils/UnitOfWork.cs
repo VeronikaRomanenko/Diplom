@@ -20,6 +20,8 @@ namespace Diplom.Utils
         private GenericRepository<Person> people;
         private GenericRepository<Comment> comments;
         private GenericRepository<Vacancy> vacancies;
+        private GenericRepository<Response> responses;
+        private GenericRepository<PeoplePosition> peoplePositions;
 
         public UnitOfWork(MyDbContext context)
         {
@@ -114,6 +116,24 @@ namespace Diplom.Utils
                 if (vacancies == null)
                     vacancies = new GenericRepository<Vacancy>(context);
                 return vacancies;
+            }
+        }
+        public GenericRepository<Response> Responses
+        {
+            get
+            {
+                if (responses == null)
+                    responses = new GenericRepository<Response>(context);
+                return responses;
+            }
+        }
+        public GenericRepository<PeoplePosition> PeoplePositions
+        {
+            get
+            {
+                if (peoplePositions == null)
+                    peoplePositions = new GenericRepository<PeoplePosition>(context);
+                return peoplePositions;
             }
         }
 
